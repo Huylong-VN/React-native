@@ -2,12 +2,25 @@ import React from "react";
 import {  View } from "react-native";
 import { NativeRouter, Switch, Route } from "react-router-native";
 import Login from './Components/Pages/Login';
+import Home from './Components/Pages/Home';
+import Layout from './Components/Layout';
 
 export default function App() {
+  const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
+    <Route
+      {...rest}
+      render={(props) => (
+        <Layout>
+          <Component {...props}></Component>
+        </Layout>
+      )}
+    ></Route>
+  );
     return (
       <NativeRouter>
           <Switch>
             <Route exact path="/" component={Login} />
+            <AppRoute path="/home" exact layout={Layout} component={Home} />
           </Switch>
       </NativeRouter>
     );
