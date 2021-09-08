@@ -7,7 +7,7 @@ export default function Home({ history }) {
 
     return (
         <View style={styles.container}>
-            <View>Home</View>
+            <View>Setting</View>
         </View>
     );
 }

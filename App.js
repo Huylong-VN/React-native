@@ -3,6 +3,7 @@ import {  View } from "react-native";
 import { NativeRouter, Switch, Route } from "react-router-native";
 import Login from './Components/Pages/Login';
 import Home from './Components/Pages/Home';
+import Setting from './Components/Pages/Setting';
 import Layout from './Components/Layout';
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
           <Switch>
             <Route exact path="/" component={Login} />
             <AppRoute path="/home" exact layout={Layout} component={Home} />
+            <AppRoute path="/setting" exact layout={Layout} component={Setting} />
           </Switch>
       </NativeRouter>
     );
