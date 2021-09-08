@@ -1,12 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, ScrollView} from 'react-native';
 import { useHistory } from "react-router-native";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { color } from 'react-native-elements/dist/helpers';
-import {
-    useFonts,
-    Roboto_400Regular,
-  } from "@expo-google-fonts/dev";
 
 export default function Layout({ children }) {
     let history = useHistory();
@@ -19,8 +15,10 @@ export default function Layout({ children }) {
                     <FontAwesome5 style={styles.iconStyles} name={'instagram'} size={25} />
                 </View>
             </View>
-            <Text style={{ marginBottom:"14%"}}></Text>
-            {children}
+            <Text style={{ marginBottom:"2%"}}></Text>
+            <ScrollView>
+                {children}
+            </ScrollView>
             <View style={styles.menu}>
                 <TouchableOpacity style={styles.menuItem} onPress={() => history.replace("/home")}>
                     <FontAwesome5 style={styles.icon} name={'home'} size={25} />
@@ -44,12 +42,13 @@ export default function Layout({ children }) {
 
 const styles = StyleSheet.create({
     header: {
+        marginTop: 18,
         zIndex:1,
-        fontSize: "25px",
+        fontSize: 25,
         fontWeight: "bold",
         textAlign: "center",
         backgroundColor: "red",
-        position:"fixed",
+        // position:"fixed",
         top:0,
         width:"100%",
         height: "7%",
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
         flex: 1,
         textAlign:"left",
         fontSize: 20,
-        fontFamily: "Roboto_400Regular",
+        fontFamily: "Roboto",
         fontWeight: "bold"
     },
     appLink:{
@@ -82,13 +81,13 @@ const styles = StyleSheet.create({
         alignItems:"center",
         width: "100%",
         backgroundColor:"pink",
-        position:"fixed",
+        // position:"fixed",
         bottom: 0,
         height: 49,
         zIndex:1,
     },
     icon:{
-        color: "red"
+        color: "red",
     },
     menuItem: {
         flex: 1,
@@ -97,8 +96,9 @@ const styles = StyleSheet.create({
         marginRight:5,
         marginLeft:5,
         justifyContent: "center",
+        alignItems: "center",
         borderRadius: 13,
-
+        flexDirection: "column",
     },
 
 });
