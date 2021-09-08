@@ -20,8 +20,8 @@ export default function App() {
     return (
       <NativeRouter>
           <Switch>
-            <Route exact path="/" component={Login} />
-            <AppRoute path="/home" exact layout={Layout} component={Home} />
+            <Route exact path="/home" component={Login} />
+            <AppRoute path="/" exact layout={Layout} component={Home} />
             <AppRoute path="/setting" exact layout={Layout} component={Setting} />
           </Switch>
       </NativeRouter>
