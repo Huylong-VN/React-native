@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Button, SafeAreaView, FlatList, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, StyleSheet, Button,ScrollView, SafeAreaView, FlatList, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import axios from 'axios';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Moment from 'moment';
@@ -34,7 +34,6 @@ export default function Home({ history }) {
                 
                 Moment.locale('vi');
                 var dt =  value.createAt;
-                console.log(dt)
                 return(
                     <View key={index} style={styles.item}> 
                         <View style={styles.imgItem}>
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
     img: {
         height: "100%",
         width: "90%",
-        borderRadius: "4%",
+        borderRadius: 10,
     },
     contentItem: {
         flex:3,
@@ -87,7 +86,7 @@ const styles = StyleSheet.create({
     },
     contentTitle: {
         fontSize: 18,
-        fontWeight: 600
+        fontWeight: "600"
     },
     contentDate: {
         opacity:0.4
