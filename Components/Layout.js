@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Button, Text, TextInput, TouchableOpacity, Image } from 'react-native';
-import { NativeRouter, Switch, Route } from "react-router-native";
+import { useHistory } from "react-router-native";
 
 
-export default function Layout({children, history }) {
-    const [click, setclick] = useState(false);
-    const [username, onChangeUsername] = useState('');
-    const [password, onChangePassword] = useState('');
-
+export default function Layout({ children }) {
+    let history = useHistory();
     return (
         <View style={styles.container}>
-            <View style={styles.header}>Header-search</View>
+            <Text style={styles.header}>Header-search</Text>
             {children}
             <View style={styles.menu}>
-                <View style={styles.menuItem} onPress={() => history.push("/home")}>Home</View>
-                <View style={styles.menuItem} onPress={() => history.push("/home")}>Home</View>
-                <View style={styles.menuItem} onPress={() => history.push("/home")}>Home</View>
-                <View style={styles.menuItem} onPress={() => history.push("/setting")}>Setting</View>
+                <TouchableOpacity onPress={() => history.replace("/home")}>
+                    <Text style={styles.menuItem} >Home</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => history.replace("/home")}>
+                    <Text style={styles.menuItem} >Home</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => history.replace("/home")}>
+                    <Text style={styles.menuItem} >Home</Text>
+                </TouchableOpacity>
+                <TouchableOpacity  onPress={() => history.replace("/setting")}>
+                    <Text style={styles.menuItem}>Setting</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
