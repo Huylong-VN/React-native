@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Button, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, StyleSheet, Button, Text, TextInput, TouchableOpacity, ActivityIndicator , Image } from 'react-native';
 
 
 export default function Home({ history }) {
-    const [click, setclick] = useState(false);
 
     return (
         <View style={styles.container}>
-            <Text>Setting</Text>
+            <Text><View><ActivityIndicator size="large" color="#0000ff"  /></View></Text>
         </View>
     );
 }

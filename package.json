@@ -11,6 +11,9 @@
     "@ant-design/react-native": "^4.2.0",
     "@expo-google-fonts/dev": "^0.2.0",
     "@expo-google-fonts/roboto": "^0.2.0",
+    "@react-native-community/masked-view": "^0.1.11",
+    "@react-navigation/native": "^6.0.2",
+    "@react-navigation/stack": "^6.0.7",
     "axios": "^0.21.4",
     "expo": "~42.0.1",
     "expo-font": "^9.2.1",
@@ -22,8 +25,13 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-elements": "^3.4.2",
     "react-native-fontawesome": "^7.0.0",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-reanimated": "^2.2.0",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.6.0",
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "~0.13.12",
+    "react-navigation": "^4.4.4",
     "react-router-native": "^5.2.1"
   },
   "devDependencies": {
