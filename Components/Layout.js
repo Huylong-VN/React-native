@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     },
     appName: {
         flex: 2,
-        textAlign: "right",
+        textAlign: "center",
         fontSize: 20,
         fontFamily: "Roboto",
         fontWeight: "bold",
