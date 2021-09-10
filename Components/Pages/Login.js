@@ -1,24 +1,16 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Button, Text, TextInput, TouchableOpacity, Image } from 'react-native';
-import * as ImagePicker from "expo-image-picker";
 
 export default function Login({ history }) {
-    const loadFile = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-          mediaTypes: ImagePicker.MediaTypeOptions.All,
-          aspect: [4, 3],
-        });
-    }
+
     const [click, setclick] = useState(false);
     const [username, onChangeUsername] = useState('');
     const [password, onChangePassword] = useState('');
     const [passwordConfirm, onChangePasswordConfirm ] = useState('');
-    const [fullname, onChangeFullname] = useState('');
-    const [phone, onChangePhone] = useState('');
     const [email, onChangeEmail] = useState('');
     return (
         <View style={styles.container}>
-            <Text style={styles.logo}>Shoppe Phòng Trọ 302</Text>
+            <Text style={styles.logo}>News COVID</Text>
             {click === false ? (
                 <>
                     <View style={styles.inputView} >
@@ -43,7 +35,7 @@ export default function Login({ history }) {
                     <TouchableOpacity>
                         <Text style={styles.forgot}>Forgot Password?</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.loginBtn} onPress={() => history.push("/home")}>
+                    <TouchableOpacity style={styles.loginBtn} onPress={() => history.push("/")}>
                         <Text style={styles.loginText}>LOGIN</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => setclick(!click)}>
@@ -84,32 +76,11 @@ export default function Login({ history }) {
                     <View style={styles.inputView} >
                         <TextInput
                             style={styles.inputText}
-                            placeholder="Enter full name..."
-                            placeholderTextColor="#003f5c"
-                            onChangeText={ onChangeFullname } 
-                            value={fullname}
-                        />
-                    </View>
-                    <View style={styles.inputView} >
-                        <TextInput
-                            style={styles.inputText}
                             placeholder="Enter email..."
                             placeholderTextColor="#003f5c"
                             onChangeText={ onChangeEmail } 
                             value={email}
                         />
-                    </View>
-                    <View style={styles.inputView} >
-                        <TextInput
-                            style={styles.inputText}
-                            placeholder="Enter phone..."
-                            placeholderTextColor="#003f5c"
-                            onChangeText={ onChangePhone } 
-                            value={phone}
-                        />
-                    </View>
-                    <View style={styles.inputView} >
-                        <Button style={styles.inputText} title="Upload Avatar" onPress={loadFile} />
                     </View>
                     <TouchableOpacity style={styles.loginBtn} onPress={() => history.push("/")}>
                         <Text style={styles.loginText}>Signup</Text>
@@ -151,11 +122,12 @@ const styles = StyleSheet.create({
     },
     inputText: {
         height: 50,
-        color: "white"
+        color: "white",
+        fontSize: 16,
     },
     forgot: {
         color: "white",
-        fontSize: 11
+        fontSize: 14
     },
     loginBtn: {
         width: "80%",
@@ -168,6 +140,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     loginText: {
-        color: "white"
+        color: "white",
+        fontSize: 16,
     }
 });

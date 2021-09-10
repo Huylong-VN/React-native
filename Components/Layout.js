@@ -9,10 +9,11 @@ export default function Layout({ children }) {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.appName}>News Covid</Text>
+                <Text style={styles.appName}>News COVID</Text>
                 <TextInput
                     style={styles.appSearch}
                     placeholder="Search ..."
+                    placeholderTextColor="white"
                 />
                 <View style={styles.appLink}>
                     <FontAwesome5 style={styles.iconStyles} name={'facebook'} size={25} />
@@ -26,13 +27,13 @@ export default function Layout({ children }) {
                 <TouchableOpacity style={ active==="home" ? styles.menuItemActive:styles.menuItem } onPress={() => { history.replace("/"); setActive("home") }}>
                     <FontAwesome5 style={ active==="home" ? styles.active: styles.icon } name={'home'} size={25} />
                 </TouchableOpacity>
-                <TouchableOpacity style={ active==="news" ? styles.menuItemActive:styles.menuItem } onPress={() => { history.replace("/setting"); setActive("news") }}>
+                <TouchableOpacity style={ active==="news" ? styles.menuItemActive:styles.menuItem } onPress={() => { history.replace("/update"); setActive("news") }}>
                     <FontAwesome5 style={ active==="news" ? styles.active: styles.icon} name={'newspaper'} size={25} />
                 </TouchableOpacity>
-                <TouchableOpacity style={ active==="plus" ? styles.menuItemActive:styles.menuItem } onPress={() => { history.replace("/setting"); setActive("plus") }}>
+                <TouchableOpacity style={ active==="plus" ? styles.menuItemActive:styles.menuItem } onPress={() => { history.replace("/update"); setActive("plus") }}>
                     <FontAwesome5 style={ active==="plus" ? styles.active: styles.icon} name={'plus-square'} size={25} />
                 </TouchableOpacity>
-                <TouchableOpacity style={ active==="notify" ? styles.menuItemActive:styles.menuItem }  onPress={() => { history.replace("/setting"); setActive("notify")}}>
+                <TouchableOpacity style={ active==="notify" ? styles.menuItemActive:styles.menuItem }  onPress={() => { history.replace("/update"); setActive("notify")}}>
                     <FontAwesome5 style={ active==="notify" ? styles.active: styles.icon} name={'bell'} size={25} />
                 </TouchableOpacity>
                 <TouchableOpacity style={ active==="setting" ? styles.menuItemActive:styles.menuItem }  onPress={() => { history.replace("/setting"); setActive("setting") }}>
@@ -62,13 +63,13 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     appName: {
-        flex: 2,
+        flex: 3,
         textAlign: "center",
         fontSize: 20,
         fontFamily: "Roboto",
         fontWeight: "bold",
         borderRadius: 10,
-        borderColor: 'black',
+        color: 'white',
     },
     appLink: {
         flex: 2,
@@ -77,11 +78,12 @@ const styles = StyleSheet.create({
         justifyContent: "flex-end"
     },
     appSearch: {
-        flex: 2,
-        borderRadius: 20,
-        height: "70%",
-        paddingLeft: 10,
-        color: "white"
+        flex: 3,
+        height: "50%",
+        paddingLeft: 3,
+        color: "white",
+        borderBottomWidth: 1,
+        borderBottomColor: "white",
         
     },
     container: {

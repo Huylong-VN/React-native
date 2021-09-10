@@ -3,20 +3,23 @@ import { View, StyleSheet, Button,ScrollView, SafeAreaView, FlatList, Text, Text
 import axios from 'axios';
 import Moment from 'moment';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { REACT_APP_API_URL,REACT_APP_BASE_IMGS } from "@env"
+
 
 export default function Home({ history }) {
     const [post, setPost] = useState([]);
     const [loading, setLoading] = useState(false);
     const [offset, setOffset] = useState(1);
     const [isListEnd, setIsListEnd] = useState(false);
+  
     useEffect(() => {
         getData()
     }, [])
-
+    // console.log(process.env)
     const getData = () => {
         if (!loading && !isListEnd) {
             setLoading(true);
-            axios.get("https://backend-api37.herokuapp.com/api/posts?maxResultCount=8&&skipCount=" + offset)
+            axios.get(REACT_APP_API_URL+"/posts?maxResultCount=8&&skipCount=" + offset)
                 .then(response => {
                     if (response.data.totalCount > 0) {
                         setOffset(offset + 1);
@@ -61,9 +64,7 @@ export default function Home({ history }) {
                 return(
                     <TouchableOpacity key={index} style={styles.item} onPress={() => {history.push("/detail?"+value.id)} }> 
                         <View style={styles.imgItem}>
-                            {value.images.map((value, index) => {
-                                return <Image key={index} style={styles.img} source = {{ uri:"https://backend-api37.herokuapp.com/store-image/"+ value.path}} />
-                            })}
+                            <Image key={index} style={styles.img} source = {{ uri:REACT_APP_BASE_IMGS+ value.images[0].path}} />
                         </View>
                         <View style={styles.contentItem}>
                             <Text style={styles.contentDate}>{Moment(dt).format('LL')}</Text>
