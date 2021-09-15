@@ -3,20 +3,23 @@ import { View, StyleSheet, Button,ScrollView, SafeAreaView, FlatList, Text, Text
 import axios from 'axios';
 import Moment from 'moment';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { REACT_APP_API_URL,REACT_APP_BASE_IMGS } from "@env"
+
 
 export default function Home({ history }) {
     const [post, setPost] = useState([]);
     const [loading, setLoading] = useState(false);
     const [offset, setOffset] = useState(1);
     const [isListEnd, setIsListEnd] = useState(false);
+  
     useEffect(() => {
         getData()
     }, [])
-
+    // console.log(process.env)
     const getData = () => {
         if (!loading && !isListEnd) {
             setLoading(true);
-            axios.get("https://backend-api37.herokuapp.com/api/posts?maxResultCount=8&&skipCount=" + offset)
+            axios.get(REACT_APP_API_URL+"posts?maxResultCount=8&&skipCount=" + offset)
                 .then(response => {
                     if (response.data.totalCount > 0) {
                         setOffset(offset + 1);
@@ -35,11 +38,11 @@ export default function Home({ history }) {
             <View style={styles.extention}>
                 <View style={styles.extentionItem1}>
                     <FontAwesome5 style={styles.icon} name={'file-medical'} size={25} />
-                    <Text style={styles.iconText}>Khai y tế</Text>
+                    <Text style={styles.iconText}>Khai báo y tế</Text>
                 </View>
                 <View style={styles.extentionItem1}>
                     <FontAwesome5 style={styles.icon} name={'user-nurse'} size={25} />
-                    <Text style={styles.iconText}>Tìm kiếm bác sĩ</Text>
+                    <Text style={styles.iconText}>Danh sách bác sĩ</Text>
                 </View>
             </View>
             <View style={styles.extention}>
@@ -61,9 +64,7 @@ export default function Home({ history }) {
                 return(
                     <TouchableOpacity key={index} style={styles.item} onPress={() => {history.push("/detail?"+value.id)} }> 
                         <View style={styles.imgItem}>
-                            {value.images.map((value, index) => {
-                                return <Image key={index} style={styles.img} source = {{ uri:"https://backend-api37.herokuapp.com/store-image/"+ value.path}} />
-                            })}
+                            <Image key={index} style={styles.img} source = {{ uri:REACT_APP_BASE_IMGS+ value.contents[0].images[0].path}} />
                         </View>
                         <View style={styles.contentItem}>
                             <Text style={styles.contentDate}>{Moment(dt).format('LL')}</Text>
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     contentTop:{
-        marginTop: 20,
+        marginTop: 10,
     },
     icon: {
         color: "white",
@@ -154,6 +155,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         borderRadius: 15,
         flexDirection: "row",
-        alignItems: "center"
+        alignItems: "center",
+        
     }
 });

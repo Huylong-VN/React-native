@@ -6,6 +6,7 @@ import Home from './Components/Pages/Home';
 import Setting from './Components/Pages/Setting';
 import Layout from './Components/Layout';
 import PostDetail from "./Components/Pages/PostDetail";
+import Update from "./Components/Pages/Update";
 import { StackNavigator } from 'react-navigation';
 
 export default function App() {
@@ -22,10 +23,11 @@ export default function App() {
     return (
       <NativeRouter>
           <Switch>
-            <Route exact path="/home" component={Login} />
+            <Route exact path="/login" component={Login} />
             <AppRoute path="/" exact layout={Layout} component={Home} />
             <AppRoute path="/setting" exact layout={Layout} component={Setting} />
             <AppRoute path="/detail" exact layout={Layout} component={PostDetail} />
+            <AppRoute path="/update" exact layout={Layout} component={Update} />
           </Switch>
       </NativeRouter>
     );
