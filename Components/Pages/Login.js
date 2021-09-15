@@ -96,7 +96,7 @@ export default function Login({ history }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'black',
+        backgroundColor: "#1877F2",
         alignItems: 'center',
         justifyContent: 'center',
     },

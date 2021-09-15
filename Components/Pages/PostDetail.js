@@ -15,13 +15,13 @@ export default function PostDetail({ history }) {
 
     const getData = () => {
         setloading(true)
-        axios.get(REACT_APP_API_URL+"/Posts/detail/" + id)
+        axios.get(REACT_APP_API_URL+"Posts/detail/" + id)
             .then(response => {
                 setPost(response.data);
                 setloading(false);
             })
     }
-    console.log(post.images)
+    console.log(post)
     return (
         <View style={styles.container}>
             <View style={styles.backHome}>
@@ -40,17 +40,21 @@ export default function PostDetail({ history }) {
             {loading === true ? <View style={styles.load}><ActivityIndicator size="large" color="#0000ff"  /></View> : (<View style={styles.content}>
                 <Text style={styles.title}><Text style={{ fontWeight: 'bold', fontSize: 21 }}>Tiêu Đề:</Text> {post.title}</Text>
                 <View style={styles.contentItem}>
-                    <Text style={styles.contentItemText}>         {post.content}</Text>
-                </View>
-                <View>
-                    {post.images != null ? 
-                    <View> 
-                        {post.images.map((value, key) => {
-                            console.log(value)
-                        return <Image key={key} style={{ height: 250, width: "100%" }} source={{ uri: REACT_APP_BASE_IMGS + value.path }} />
-                        })}
-                    </View> : <Text>No Content</Text>}
-
+                    {post.contents != null ? 
+                     
+                        post.contents.map((value, index) => {
+                        return (
+                            <View key= {index}>
+                                <Text style={styles.contentItemText}>         {value.contentItem}</Text>
+                                <View>
+                                    { value.images != null ? value.images.map((value, index) => {
+                                        return <Image key={index} style={styles.img} source={{ uri: REACT_APP_BASE_IMGS + value.path }} />
+                                    }) : <View></View>}
+                                </View> 
+                            </View>
+                            
+                        )})
+                     : <View></View>}
                 </View>
                 <Text style={styles.date}>{Moment(post.createAt).format('LL')}</Text>
             </View>)}
@@ -67,13 +71,18 @@ const styles = StyleSheet.create({
 
     },
     date: {
-        color: 'black', textAlign: 'right', fontWeight: 'bold', marginTop: '2%'
+        color: 'black', 
+        textAlign: 'right', 
+        fontWeight: 'bold', 
+        margin: '2%'
     },
     contentItemText: {
-        fontSize: 15
+        fontSize: 15,
+        marginRight:"2%",
+        marginLeft: "2%"
     },
     contentItem: {
-        margin: "2%"
+
     },
     content: {
         marginTop: "3%"
@@ -118,7 +127,13 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 21,
         color: 'black',
-        margin:"2%"
+        margin:"2%",
     },
+    img: {
+        height: 250, 
+        width: "100%",
+        marginTop: "1%",
+        marginBottom: "6%"
+    }
 
 });

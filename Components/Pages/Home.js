@@ -19,7 +19,7 @@ export default function Home({ history }) {
     const getData = () => {
         if (!loading && !isListEnd) {
             setLoading(true);
-            axios.get(REACT_APP_API_URL+"/posts?maxResultCount=8&&skipCount=" + offset)
+            axios.get(REACT_APP_API_URL+"posts?maxResultCount=8&&skipCount=" + offset)
                 .then(response => {
                     if (response.data.totalCount > 0) {
                         setOffset(offset + 1);
@@ -38,11 +38,11 @@ export default function Home({ history }) {
             <View style={styles.extention}>
                 <View style={styles.extentionItem1}>
                     <FontAwesome5 style={styles.icon} name={'file-medical'} size={25} />
-                    <Text style={styles.iconText}>Khai y tế</Text>
+                    <Text style={styles.iconText}>Khai báo y tế</Text>
                 </View>
                 <View style={styles.extentionItem1}>
                     <FontAwesome5 style={styles.icon} name={'user-nurse'} size={25} />
-                    <Text style={styles.iconText}>Tìm kiếm bác sĩ</Text>
+                    <Text style={styles.iconText}>Danh sách bác sĩ</Text>
                 </View>
             </View>
             <View style={styles.extention}>
@@ -64,7 +64,7 @@ export default function Home({ history }) {
                 return(
                     <TouchableOpacity key={index} style={styles.item} onPress={() => {history.push("/detail?"+value.id)} }> 
                         <View style={styles.imgItem}>
-                            <Image key={index} style={styles.img} source = {{ uri:REACT_APP_BASE_IMGS+ value.images[0].path}} />
+                            <Image key={index} style={styles.img} source = {{ uri:REACT_APP_BASE_IMGS+ value.contents[0].images[0].path}} />
                         </View>
                         <View style={styles.contentItem}>
                             <Text style={styles.contentDate}>{Moment(dt).format('LL')}</Text>
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     contentTop:{
-        marginTop: 20,
+        marginTop: 10,
     },
     icon: {
         color: "white",
@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         borderRadius: 15,
         flexDirection: "row",
-        alignItems: "center"
+        alignItems: "center",
+        
     }
 });

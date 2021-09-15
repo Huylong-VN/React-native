@@ -12,7 +12,7 @@ export default function Layout({ children }) {
                 <Text style={styles.appName}>News COVID</Text>
                 <TextInput
                     style={styles.appSearch}
-                    placeholder="Search ..."
+                    placeholder="Tìm kiếm bài viết ..."
                     placeholderTextColor="white"
                 />
                 <View style={styles.appLink}>
